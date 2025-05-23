@@ -1,0 +1,196 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* ثابت در هر دو حالت */
+    --white-fixed: #ffffff;
+    --black-fixed: #000000;
+
+    /* طیف رنگ زمینه */
+    --bg-base-100: #ffffff;
+    --bg-base-200: #f5f5f5;
+    --bg-base-300: #e0e0e0;
+    --bg-base-400: #cccccc;
+    --bg-base-500: #b3b3b3;
+
+    /* طیف رنگ متن */
+    --text-base-100: #000000;
+    --text-base-200: #1a1a1a;
+    --text-base-300: #333333;
+    --text-base-400: #4d4d4d;
+    --text-base-500: #666666;
+
+    /* رنگ‌های اصلی */
+    --primary-100: #e0f2f1;
+    --primary-200: #b2dfdb;
+    --primary-300: #80cbc4;
+    --primary-400: #4db6ac;
+    --primary-500: #26a69a;
+
+    --secondary-100: #fce4ec;
+    --secondary-200: #f8bbd0;
+    --secondary-300: #f48fb1;
+    --secondary-400: #f06292;
+    --secondary-500: #ec407a;
+
+    /* رنگ‌های متفرقه */
+    --teal-100: #e0f7fa;
+    --teal-200: #b2ebf2;
+    --teal-300: #80deea;
+    --teal-400: #4dd0e1;
+    --teal-500: #26c6da;
+    --teal-600: #00bcd4;
+    --teal-700: #00acc1;
+    --teal-800: #0097a7;
+
+    --rose-100: #ffe4e9;
+    --rose-200: #ffccd5;
+    --rose-300: #ff99aa;
+    --rose-400: #ff6680;
+    --rose-500: #ff3366;
+    --rose-600: #e6004d;
+    --rose-700: #b3003d;
+    --rose-800: #80002e;
+
+    --green-100: #e6f4ea;
+    --green-200: #ccead6;
+    --green-300: #99d5ad;
+    --green-400: #66c185;
+    --green-500: #33ac5c;
+    --green-600: #28954c;
+    --green-700: #1f6f39;
+    --green-800: #174a27;
+
+    --orange-100: #fff3e0;
+    --orange-200: #ffe0b2;
+    --orange-300: #ffcc80;
+    --orange-400: #ffb74d;
+    --orange-500: #ffa726;
+    --orange-600: #fb8c00;
+    --orange-700: #ef6c00;
+    --orange-800: #e65100;
+
+    --purple-100: #f3e5f5;
+    --purple-200: #e1bee7;
+    --purple-300: #ce93d8;
+    --purple-400: #ba68c8;
+    --purple-500: #ab47bc;
+    --purple-600: #9c27b0;
+    --purple-700: #8e24aa;
+    --purple-800: #7b1fa2;
+
+    --indigo-100: #e8eaf6;
+    --indigo-200: #c5cae9;
+    --indigo-300: #9fa8da;
+    --indigo-400: #7986cb;
+    --indigo-500: #5c6bc0;
+    --indigo-600: #3f51b5;
+    --indigo-700: #3949ab;
+    --indigo-800: #303f9f;
+
+    --cyan-100: #e0f7fa;
+    --cyan-200: #b2ebf2;
+    --cyan-300: #80deea;
+    --cyan-400: #4dd0e1;
+    --cyan-500: #26c6da;
+    --cyan-600: #00bcd4;
+    --cyan-700: #00acc1;
+    --cyan-800: #0097a7;
+}
+
+/* حالت دارک مود */
+.dark {
+    --bg-base-100: #121212;
+    --bg-base-200: #1e1e1e;
+    --bg-base-300: #2c2c2c;
+    --bg-base-400: #3a3a3a;
+    --bg-base-500: #484848;
+
+    --text-base-100: #ffffff;
+    --text-base-200: #e0e0e0;
+    --text-base-300: #cccccc;
+    --text-base-400: #b3b3b3;
+    --text-base-500: #999999;
+
+    --primary-100: #0d4742;
+    --primary-200: #126b63;
+    --primary-300: #26a69a;
+    --primary-400: #33cbb7;
+    --primary-500: #6fe0d4;
+
+    --secondary-100: #4b1b2a;
+    --secondary-200: #732742;
+    --secondary-300: #a43a61;
+    --secondary-400: #ec407a;
+    --secondary-500: #f7799e;
+
+    --teal-100: #11474e;
+    --teal-200: #156973;
+    --teal-300: #1a8b99;
+    --teal-400: #1ebdc2;
+    --teal-500: #26c6da;
+    --teal-600: #00bcd4;
+    --teal-700: #0097a7;
+    --teal-800: #006974;
+
+    --rose-100: #4c1c26;
+    --rose-200: #661e33;
+    --rose-300: #8d2649;
+    --rose-400: #b42d5f;
+    --rose-500: #ff5c8d;
+    --rose-600: #e6004d;
+    --rose-700: #b3003d;
+    --rose-800: #80002e;
+
+    --green-100: #1e3c29;
+    --green-200: #285739;
+    --green-300: #33934c;
+    --green-400: #4cd166;
+    --green-500: #33ac5c;
+    --green-600: #28954c;
+    --green-700: #1f6f39;
+    --green-800: #174a27;
+
+    --orange-100: #4e3112;
+    --orange-200: #804715;
+    --orange-300: #b25c1a;
+    --orange-400: #ff8000;
+    --orange-500: #ffa726;
+    --orange-600: #fb8c00;
+    --orange-700: #ef6c00;
+    --orange-800: #e65100;
+
+    --purple-100: #3c2142;
+    --purple-200: #552d5e;
+    --purple-300: #6f3a7a;
+    --purple-400: #9e47a6;
+    --purple-500: #ab47bc;
+    --purple-600: #9c27b0;
+    --purple-700: #8e24aa;
+    --purple-800: #7b1fa2;
+
+    --indigo-100: #1f235c;
+    --indigo-200: #2a2f80;
+    --indigo-300: #343ba3;
+    --indigo-400: #3f47c7;
+    --indigo-500: #5c6bc0;
+    --indigo-600: #3f51b5;
+    --indigo-700: #3949ab;
+    --indigo-800: #303f9f;
+
+    --cyan-100: #103940;
+    --cyan-200: #145661;
+    --cyan-300: #1b798c;
+    --cyan-400: #22aab7;
+    --cyan-500: #26c6da;
+    --cyan-600: #00bcd4;
+    --cyan-700: #00acc1;
+    --cyan-800: #0097a7;
+}
+
+body , html {
+    font-family: var(--font-vazir);
+}
