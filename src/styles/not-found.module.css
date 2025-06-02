@@ -1,0 +1,14 @@
+.container {
+    margin: 60px auto;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 15px;
+    padding: 0px 30px;
+}
+
+.arrow-right-icon {
+    color: var(--blue-400);
+}
