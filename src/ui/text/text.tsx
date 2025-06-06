@@ -13,8 +13,8 @@ type HeadingProps = {
 const Text: React.FC<HeadingProps> = ({
     as: Tag,
     color = "var(--text-base-200)",
-    fontSize = "16px",
-    fontWeight = "400",
+    fontSize,
+    fontWeight,
     style,
     children,
 }) => {

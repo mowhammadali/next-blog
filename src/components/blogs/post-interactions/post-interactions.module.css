@@ -1,0 +1,32 @@
+.container {
+    display: flex;
+    align-items: center;
+    gap: 8px
+}
+
+.comment-container {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px;
+    border-radius: 8px;
+    background-color: var(--bg-base-300);
+}
+
+.bookmark-icon , .heart-icon , .comment-icon {
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.comment-icon {
+    font-size: 14px;
+    color: var(--text-base-600);
+}
+
+.heart-icon {
+    color: var(--rose-500);
+}
+
+.bookmark-icon {
+    color: var(--indigo-500);
+}

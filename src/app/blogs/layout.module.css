@@ -1,0 +1,47 @@
+.container {
+    width: 100%;
+    height: calc(100dvh - 60px);
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    padding: 40px 200px;
+    overflow: hidden;
+}
+
+.left {
+    display: flex;
+    flex-direction: column;
+    grid-column: 3 / 8;
+    height: 100%;
+    overflow: auto;
+}
+
+.header,
+.blogs,
+.footer {
+    width: 100%;
+}
+
+.header {
+    height: 60px;
+}
+
+.blogs {
+    padding: 30px 0;
+    overflow: auto;
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: repeat(3 , 1fr);
+    grid-template-rows: auto;
+    row-gap: 30px;
+    column-gap: 30px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.blogst::-webkit-scrollbar {
+    display: none;
+}
+
+.footer {
+    height: 40px;
+}
