@@ -7,6 +7,7 @@ type HeadingProps = {
     fontSize?: string;
     fontWeight?: string;
     style?: React.CSSProperties;
+    onClick?: () => void;
     children: React.ReactNode;
 };
 
@@ -16,10 +17,16 @@ const Text: React.FC<HeadingProps> = ({
     fontSize,
     fontWeight,
     style,
+    onClick,
     children,
 }) => {
     return (
-        <Tag style={{ color, fontSize, fontWeight, ...style }}>{children}</Tag>
+        <Tag
+            style={{ color, fontSize, fontWeight, ...style }}
+            onClick={onClick}
+        >
+            {children}
+        </Tag>
     );
 };
 

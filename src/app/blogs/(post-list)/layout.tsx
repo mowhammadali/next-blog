@@ -1,5 +1,5 @@
 import React from "react";
-import css from "@/app/blogs/layout.module.css";
+import css from "@/app/blogs/(post-list)/layout.module.css";
 import CategoryList from "@/components/blogs/category-list/category-list";
 
 interface PropsType {

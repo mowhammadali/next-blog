@@ -1,0 +1,24 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 30px;
+    padding: 50px 200px;
+}
+
+.image-container {
+    position: relative;
+    width: 600px;
+    aspect-ratio: 16 / 9;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.image{
+    transition: transform .3s;
+    cursor: pointer;
+}
+
+.image:hover{
+    transform: scale(1.2);
+}
