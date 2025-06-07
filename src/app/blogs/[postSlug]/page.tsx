@@ -1,7 +1,8 @@
 import React from "react";
 import SinglePost from "@/components/blogs/single-post/single-post";
-import { Post } from "@/components/blogs/post-list/post-list";
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
+import { getPostBySlug } from "@/services/posts";
 
 interface PropsType {
     params: {
@@ -9,14 +10,27 @@ interface PropsType {
     };
 }
 
+export async function generateMetadata(
+    { params }: PropsType,
+): Promise<Metadata> {
+    const postSlug = (await params).postSlug;
+
+    const post = await getPostBySlug(postSlug);
+
+    if (!post)
+        return {
+            title: "یافت نشد",
+        };
+
+    return {
+        title: post.title,
+    };
+}
+
 const post = async ({ params }: PropsType) => {
     const postSlug = (await params).postSlug;
 
-    const res = await fetch(
-        `${process.env.NEXT_PUBLIC_BASE_URL}post/slug/${postSlug}`
-    );
-    const { data } = await res.json();
-    const post: Post = data?.post;
+    const post = await getPostBySlug(postSlug);
 
     if (!post) notFound();
 
