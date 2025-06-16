@@ -17,7 +17,7 @@ export interface Post {
         name: string;
     };
     readingTime: number;
-    comments: {}[];
+    comments: {_id: string}[];
     isBookmarked: boolean;
     isLiked: boolean;
     slug: string;

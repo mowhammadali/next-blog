@@ -1,34 +1,45 @@
 import React from "react";
 import SinglePost from "@/components/blogs/single-post/single-post";
 import { notFound } from "next/navigation";
-import type { Metadata } from "next";
 import { getPostBySlug } from "@/services/posts";
+import { Post as PostTypes } from "@/components/blogs/post-list/post-list";
 
 interface PropsType {
-    params: {
+    params: Promise<{
         postSlug: string;
-    };
+    }>;
 }
 
-export async function generateMetadata(
-    { params }: PropsType,
-): Promise<Metadata> {
-    const postSlug = (await params).postSlug;
+export async function generateStaticParams(): Promise<{ postSlug: string }[]> {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/post/list`);
+    const {
+        data: { posts },
+    } = await res.json();
+    const allPosts: PostTypes[] = posts;
+
+    return allPosts.map(post => ({postSlug: post.slug}))
+}
+
+export async function generateMetadata({ params }: PropsType) {
+    const props = await params;
+    const postSlug = props.postSlug;
 
     const post = await getPostBySlug(postSlug);
 
-    if (!post)
+    if (!post) {
         return {
             title: "یافت نشد",
         };
+    }
 
     return {
         title: post.title,
     };
 }
 
-const post = async ({ params }: PropsType) => {
-    const postSlug = (await params).postSlug;
+const Post = async ({ params }: PropsType) => {
+    const props = await params;
+    const postSlug = props.postSlug;
 
     const post = await getPostBySlug(postSlug);
 
@@ -37,4 +48,4 @@ const post = async ({ params }: PropsType) => {
     return <SinglePost {...post} />;
 };
 
-export default post;
+export default Post;

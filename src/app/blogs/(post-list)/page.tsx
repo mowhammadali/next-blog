@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React from "react";
 import { Metadata } from "next";
 import PostList from "@/components/blogs/post-list/post-list";
 
