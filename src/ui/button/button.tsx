@@ -4,7 +4,7 @@ import classNames from "classnames";
 
 interface PropsType {
     children: React.ReactNode;
-    onClick?: () => any;
+    onClick?: () => void;
     height?: string;
     width?: string;
     bg?: string;
