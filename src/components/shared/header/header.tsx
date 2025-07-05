@@ -17,7 +17,7 @@ const Header = () => {
                 ?
                 <Navigation route='/profile'>حساب کاربری</Navigation>
                 :
-                <Navigation route='/login'>ورود</Navigation>
+                <Navigation route='/signup'>ورود</Navigation>
             }
         </div>
     </div>

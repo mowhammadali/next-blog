@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "@/styles/globals.css";
 import vazirFont from "@/constants/local-font";
 import Header from "@/components/shared/header/header";
+  import { ToastContainer } from 'react-toastify';
 
 export const metadata: Metadata = {
     title: {
@@ -20,6 +21,7 @@ export default function RootLayout({
         <html lang="fa" dir="rtl" className={vazirFont.variable}>
             <body className={vazirFont.variable}>
                 <Header />
+                <ToastContainer />
                 {children}
             </body>
         </html>
