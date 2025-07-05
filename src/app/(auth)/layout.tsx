@@ -1,10 +1,10 @@
 import React from 'react'
 import css from "@/app/(auth)/layout.module.css";
-import { Metadata } from "next";
+import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "ورود",
-  description: "ورود کاربر"
+    title: "ورود و ثبت نام",
+    description: "ورود کاربر"
 }
 
 interface PropsType {
