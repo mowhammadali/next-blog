@@ -1,7 +1,7 @@
 import React from "react";
 import SinglePost from "@/components/blogs/single-post/single-post";
 import { notFound } from "next/navigation";
-import { getPostBySlug } from "@/services/posts";
+import { getPostBySlug, getPostList } from "@/services/postService";
 import { Post as PostTypes } from "@/components/blogs/post-list/post-list";
 
 interface PropsType {
@@ -11,11 +11,7 @@ interface PropsType {
 }
 
 export async function generateStaticParams(): Promise<{ postSlug: string }[]> {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/post/list`);
-    const {
-        data: { posts },
-    } = await res.json();
-    const allPosts: PostTypes[] = posts;
+    const allPosts: PostTypes[] = await getPostList();
 
     return allPosts.map(post => ({postSlug: post.slug}))
 }

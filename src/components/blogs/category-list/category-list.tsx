@@ -3,6 +3,7 @@ import Navigation from "@/ui/navigation/navigation";
 import css from "@/components/blogs/category-list/category-list.module.css";
 import Text from "@/ui/text/text";
 import Skeleton from "@/ui/skeleton/skeleton";
+import { getCategoryList } from "@/services/postService";
 
 interface Categories {
     slug: string;
@@ -30,10 +31,7 @@ const List = async () => {
         }, 2000)
     );
 
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}category/list`);
-    const {
-        data: { categories },
-    } = await res.json();
+    const categories = await getCategoryList();
 
     return (
         <ul className={css.list}>
@@ -53,9 +51,14 @@ const List = async () => {
 
 const ListLoading = () => {
     return (
-        <div style={{display: "flex" , flexDirection: "column" , gap: "8px"}}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
             {Array.from({ length: 8 }, (_, i) => i + 1).map((item) => (
-                <Skeleton key={item} width="70px" height="25px" variant="rect"/>
+                <Skeleton
+                    key={item}
+                    width="70px"
+                    height="25px"
+                    variant="rect"
+                />
             ))}
         </div>
     );

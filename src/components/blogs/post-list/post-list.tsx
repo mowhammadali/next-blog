@@ -1,11 +1,12 @@
+import React, { Suspense } from "react";
 import Text from "@/ui/text/text";
 import Image from "next/image";
-import React, { Suspense } from "react";
 import css from "@/components/blogs/post-list/post-list.module.css";
 import Skeleton from "@/ui/skeleton/skeleton";
 import PostInteractions from "../post-interactions/post-interactions";
-import { FiClock } from "react-icons/fi";
 import Navigation from "@/ui/navigation/navigation";
+import { FiClock } from "react-icons/fi";
+import { getPostList } from "@/services/postService";
 
 export interface Post {
     title: string;
@@ -17,7 +18,7 @@ export interface Post {
         name: string;
     };
     readingTime: number;
-    comments: {_id: string}[];
+    comments: { _id: string }[];
     isBookmarked: boolean;
     isLiked: boolean;
     slug: string;
@@ -40,10 +41,7 @@ const List = async () => {
         }, 3000)
     );
 
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/post/list`);
-    const {
-        data: { posts },
-    } = await res.json();
+    const posts = await getPostList();
 
     return (
         <>
