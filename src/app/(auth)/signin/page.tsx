@@ -5,18 +5,15 @@ import css from "@/app/(auth)/signin/page.module.css";
 import RHFTextField from "@/ui/RHFTextField/RHFTextField";
 import * as yup from "yup";
 import Button from "@/ui/button/button";
-import axios from "axios";
 import Link from "next/link";
+import useAuth from "@/hooks/useAuth";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { signinService } from "@/services/authService";
-import { toast } from "react-toastify";
-import { useRouter } from "next/navigation";
 
-type FormValues = {
+export interface SigninFormValues {
     email: string;
     password: string;
-};
+}
 
 const schema = yup.object().shape({
     email: yup.string().email("ایمیل نامعتبر است").required("ایمیل الزامی است"),
@@ -24,42 +21,19 @@ const schema = yup.object().shape({
 });
 
 const SignIn = () => {
-    const router = useRouter();
+    const { signin } = useAuth();
 
     const {
         register,
         handleSubmit,
-        reset,
         formState: { errors },
-    } = useForm<FormValues>({
+    } = useForm<SigninFormValues>({
         resolver: yupResolver(schema),
         mode: "onChange",
     });
 
-    const onSubmit = async (data: FormValues) => {
-        try {
-            await signinService(data);
-            toast("با موفقیت وارد شدین", {
-                type: "success",
-                autoClose: 3000,
-            });
-            reset();
-            router.push("/dashboard");
-        } catch (error) {
-            if (axios.isAxiosError(error)) {
-                if (error.response) {
-                    toast(error.response.data.message, {
-                        type: "error",
-                        autoClose: 3000,
-                    });
-                } else {
-                    toast(error.message, {
-                        type: "error",
-                        autoClose: 3000,
-                    });
-                }
-            }
-        }
+    const onSubmit = async (data: SigninFormValues) => {
+        await signin(data);
     };
 
     return (

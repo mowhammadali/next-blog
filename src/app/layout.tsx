@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import "@/styles/globals.css";
 import vazirFont from "@/constants/local-font";
 import Header from "@/components/shared/header/header";
-  import { ToastContainer } from 'react-toastify';
+import AuthContextProvider from "@/context/auth-context";
+import { ToastContainer } from "react-toastify";
 
 export const metadata: Metadata = {
     title: {
@@ -20,9 +21,11 @@ export default function RootLayout({
     return (
         <html lang="fa" dir="rtl" className={vazirFont.variable}>
             <body className={vazirFont.variable}>
-                <Header />
-                <ToastContainer />
-                {children}
+                <AuthContextProvider>
+                    <Header />
+                    <ToastContainer />
+                    {children}
+                </AuthContextProvider>
             </body>
         </html>
     );
